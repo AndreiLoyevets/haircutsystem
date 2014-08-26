@@ -1,0 +1,29 @@
+<ui:composition template = "template.xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define name = "content">
+        <h:messages/>
+        <h:form id="womensform">
+            <p:dataGrid var="haircut" value="#{haircutsManager.womensHaircuts}" columns="3"
+                        rows="12" paginator="true" id="womenshaircuts"
+                        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+
+                <f:facet name="header">
+                    Women's Collection
+                </f:facet>
+
+                <p:panel header="#{haircut.name}" style="text-align:center; width: 314px">
+                    <h:panelGrid columns="1">
+                        <h:commandLink action="#{haircutsManager.chooseCurrent(haircut)}">
+                            <p:graphicImage name="images/#{haircut.name}.jpg" style="width: 275px; height: 300px"/>
+                        </h:commandLink>
+                        <h:outputText value="$#{haircut.price}"/>
+                    </h:panelGrid>
+                </p:panel>
+
+            </p:dataGrid>
+        </h:form>
+    </ui:define>
+</ui:composition>

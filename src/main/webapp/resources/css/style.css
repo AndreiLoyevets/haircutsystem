@@ -1,0 +1,68 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jun 6, 2014, 3:06:15 PM
+    Author     : Tourist
+*/
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    width: 1000px;
+    margin: 0 auto;
+    background-image: url("#{resource['css:scissors.jpg']}");
+}
+
+#main {
+    background-color: #FFFFFF;
+}
+
+#header {
+    height: 70px;
+    width: 1000px;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+#topMenu {
+    height: 50px;
+    width: 900px;
+    float: left;
+    background-color: #FFFFFF;
+}
+
+#topRight {
+    height: 50px;
+    width: 100px;
+    float: left;
+    background-color: #FFFFFF;
+}
+
+#content {
+    clear: left;
+    background-color: #FFFFFF;
+}
+
+#leftColumn {
+    width: 300px;
+    float: left;
+    background-color: #FFFFFF;
+}
+
+#rightColumn {
+    width: 700px;
+    float: left;
+    background-color: #FFFFFF;
+}
+
+#footer {
+    width: 1000px;
+    height: 50px;
+    clear: left;
+    background-color: #98AF83;
+}
+
+.errorMessage {
+    color: red;
+}

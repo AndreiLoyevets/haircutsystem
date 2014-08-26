@@ -1,0 +1,31 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Barbershop</title>
+    </h:head>
+    <h:body>
+        <h:outputStylesheet library="css" name="style.css"/>
+        <div id="main">
+            <div id="header">
+                <h1>Welcome to the Barbershop!</h1>
+            </div>
+            <div id="topMenu">
+                <h:form id="mainmenuform">
+                    <p:tabMenu model="#{menuManager.model}" activeIndex="-1"/>
+                </h:form>
+            </div>
+            <div id="topRight">
+                <h:form id="authentform">
+                    <p:button value="Login" outcome="login" rendered="#{!userManager.loggedIn}"/>
+                    <p:commandButton value="Logout" action="#{userManager.logout()}" ajax="false" rendered="#{userManager.loggedIn}"/>
+                </h:form>    
+            </div>
+            <div id="content">
+                <ui:insert name="content"/>
+            </div>
+        </div>
+        <div id="footer"/>
+    </h:body>
+</html>

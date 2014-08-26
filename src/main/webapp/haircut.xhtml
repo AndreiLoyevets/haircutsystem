@@ -1,0 +1,16 @@
+<ui:composition template = "template.xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+    <ui:define name = "content">
+        <p:panel header="#{haircutsManager.currentHaircut.name}">
+            <h:panelGrid columns="1" style="text-align: center">
+                <p:graphicImage name="images/#{haircutsManager.currentHaircut.name}.jpg" style="width: 275px; height: 300px"/>
+                <h:outputText value="Price: $#{haircutsManager.currentHaircut.price}"/>
+                <h:outputText value="Gender: #{haircutsManager.currentHaircut.gender}"/>
+                <h:outputText value="#{haircutsManager.currentHaircut.description}"/>
+                <p:button value="Choose" outcome="clients" rendered="#{not empty cashierManager.cashier}"/>
+            </h:panelGrid>
+        </p:panel>
+    </ui:define>
+</ui:composition>

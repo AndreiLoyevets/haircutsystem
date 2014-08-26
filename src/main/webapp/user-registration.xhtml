@@ -1,0 +1,76 @@
+<ui:composition template = "template.xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define name = "content">
+        <br/>
+        <h:form id="registrationform">
+            <div style="color: red"> <!-- could not do it in another way -->
+                <h:inputHidden id="regerrors"/>
+                <h:message for="regerrors" errorClass="errorMessage"/>
+            </div>
+            <h:panelGrid id="registrationtable" columns="2" style="margin: 0 auto">
+                Login:
+                <h:panelGroup id="logingroup">
+                    <h:inputText id="login" value="#{userBean.login}" required="true"
+                                 requiredMessage="Please enter login"
+                                 validator="#{userManager.uniqueLoginCheck}">
+                        <f:ajax event="blur" render="logingroup"/>
+                    </h:inputText>
+                    <h:message for="login" errorClass="errorMessage"/>
+                </h:panelGroup>
+                Password:
+                <h:panelGroup id="passwordGroup">
+                    <h:inputSecret id="password" value="#{userBean.password}"
+                                   required="true" requiredMessage="Please enter password">
+                    </h:inputSecret>
+                    <h:message id="passwordmessage" for="password" errorClass="errorMessage"/>
+                </h:panelGroup>
+                Confirm password:
+                <h:panelGroup id="confirmPasswordGroup">
+                    <h:inputSecret id="confirmPassword" value="#{userBean.confirmPassword}"
+                                   required="true" requiredMessage="Please re-enter password">
+                    </h:inputSecret>
+                    <h:message for="confirmPassword" errorClass="errorMessage"/>
+                </h:panelGroup>
+                Name:
+                <h:panelGroup id="nameGroup">
+                    <h:inputText id="name" value="#{clientBean.name}"
+                                 required="true" requiredMessage="Please enter your name">
+                        <f:ajax event="blur" render="nameGroup"/>
+                    </h:inputText>
+                    <h:message for="name" errorClass="errorMessage"/>
+                </h:panelGroup>
+                Surname:
+                <h:panelGroup id="surnameGroup">
+                    <h:inputText id="surname" value="#{clientBean.surname}"
+                                 required="true" requiredMessage="Please enter your surname">
+                        <f:ajax event="blur" render="surnameGroup"/>
+                    </h:inputText>
+                    <h:message for="surname" errorClass="errorMessage"/>
+                </h:panelGroup>
+                Email:
+                <h:panelGroup id="emailGroup">
+                    <h:inputText id="email" value="#{clientBean.email}"
+                                 required="true" requiredMessage="Please enter your email"
+                                 validator="#{clientManager.uniqueEmailCheck}">
+                        <f:ajax event="blur" render="emailGroup"/>
+                    </h:inputText>
+                    <h:message for="email" errorClass="errorMessage"/>
+                </h:panelGroup>
+                Phone:
+                <h:panelGroup id="phoneGroup">
+                    <h:inputText id="phone" value="#{clientBean.phone}"
+                                 required="false" requiredMessage="Please enter your message"
+                                 validator="#{clientManager.uniquePhoneCheck}">
+                        <f:ajax event="blur" render="phoneGroup"/>
+                    </h:inputText>
+                    <h:message for="phone" errorClass="errorMessage"/>
+                </h:panelGroup>
+                <p:commandButton value="Submit" action="#{clientManager.register(userBean, clientBean)}" ajax="false"/>
+            </h:panelGrid>
+        </h:form>
+        <br/>
+    </ui:define>
+</ui:composition>
